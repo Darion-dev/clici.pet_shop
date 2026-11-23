@@ -1,0 +1,199 @@
+/* Clici Pets Shopping - estilo principal */
+:root {
+    --coral: #ff7a59;
+    --coral-escuro: #f4552e;
+    --menta: #2ec4b6;
+    --menta-escuro: #1a9c90;
+    --noite: #1d2b3a;
+    --creme: #fff8f2;
+    --branco: #ffffff;
+    --cinza: #6b7785;
+    --borda: #f0e4da;
+    --sombra: 0 10px 30px rgba(29, 43, 58, .08);
+    --sombra-forte: 0 18px 40px rgba(244, 85, 46, .18);
+    --raio: 18px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+    margin: 0;
+    font-family: 'Nunito', Arial, Helvetica, sans-serif;
+    color: var(--noite);
+    background: var(--creme);
+    line-height: 1.55;
+}
+
+h1, h2, h3 { font-family: 'Fredoka', 'Nunito', Arial, sans-serif; line-height: 1.15; margin: 0 0 .5em; }
+h1 { font-size: clamp(2rem, 5vw, 3.2rem); }
+h2 { font-size: clamp(1.5rem, 3.5vw, 2.1rem); }
+a { color: var(--coral-escuro); }
+
+/* ---------- Cabeçalho ---------- */
+.site-header {
+    position: sticky; top: 0; z-index: 50;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    padding: 12px 6vw;
+    background: rgba(255, 248, 242, .88);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--borda);
+}
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--noite); }
+.logo-icon {
+    display: grid; place-items: center; width: 44px; height: 44px; font-size: 1.4rem;
+    background: linear-gradient(135deg, var(--coral), #ffb199);
+    border-radius: 14px; box-shadow: 0 6px 14px rgba(244, 85, 46, .3);
+}
+.logo-text { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 1.5rem; line-height: 1; display: flex; flex-direction: column; }
+.logo-text small { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; color: var(--menta-escuro); margin-top: 3px; }
+
+.menu { display: flex; align-items: center; gap: 6px; }
+.menu a {
+    text-decoration: none; color: var(--noite); font-weight: 700; font-size: .95rem;
+    padding: 9px 14px; border-radius: 999px; transition: background .2s, color .2s;
+}
+.menu a:hover { background: var(--borda); }
+.menu .menu-cta { background: var(--coral); color: #fff; box-shadow: 0 6px 14px rgba(244, 85, 46, .3); }
+.menu .menu-cta:hover { background: var(--coral-escuro); }
+.menu .menu-sair { color: var(--cinza); }
+.menu-toggle, .menu-btn { display: none; }
+
+/* ---------- Layout ---------- */
+main { max-width: 1080px; margin: 32px auto; padding: 0 20px; }
+.main-flash { margin: 16px auto 0; }
+
+.hero {
+    position: relative; overflow: hidden;
+    padding: clamp(32px, 7vw, 72px) clamp(24px, 5vw, 56px);
+    border-radius: 28px; color: #fff;
+    background: radial-gradient(circle at 85% 20%, rgba(255, 255, 255, .22), transparent 40%),
+                linear-gradient(135deg, var(--coral) 0%, #ff9d7a 55%, var(--menta) 130%);
+    box-shadow: var(--sombra-forte);
+}
+.hero::after {
+    content: '🐶🐱'; position: absolute; right: 4%; bottom: -10px;
+    font-size: clamp(4rem, 14vw, 9rem); opacity: .9; letter-spacing: -.1em;
+    filter: drop-shadow(0 12px 18px rgba(0, 0, 0, .15));
+}
+.hero > * { position: relative; z-index: 1; max-width: 560px; }
+.hero p { font-size: 1.15rem; margin: 0 0 22px; }
+.hero .tag {
+    display: inline-block; background: rgba(255, 255, 255, .25); padding: 5px 14px;
+    border-radius: 999px; font-weight: 800; font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 14px;
+}
+
+.secao { margin-top: 48px; }
+.secao-titulo { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.sub { color: var(--cinza); margin-top: -4px; }
+
+/* ---------- Botões ---------- */
+.btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    background: var(--coral); color: #fff; border: 0; border-radius: 999px;
+    padding: 12px 24px; font: 800 1rem 'Nunito', sans-serif; text-decoration: none; cursor: pointer;
+    box-shadow: 0 8px 18px rgba(244, 85, 46, .3);
+    transition: transform .15s, box-shadow .15s, background .2s;
+}
+.btn:hover { background: var(--coral-escuro); transform: translateY(-2px); box-shadow: 0 12px 22px rgba(244, 85, 46, .35); }
+.hero .btn { background: #fff; color: var(--coral-escuro); box-shadow: 0 8px 18px rgba(0, 0, 0, .15); }
+.hero .btn:hover { background: var(--creme); }
+.btn.menta { background: var(--menta); box-shadow: 0 8px 18px rgba(46, 196, 182, .3); }
+.btn.menta:hover { background: var(--menta-escuro); }
+.btn.sec { background: var(--noite); box-shadow: 0 8px 18px rgba(29, 43, 58, .2); }
+.btn.perigo { background: #d64545; box-shadow: 0 8px 18px rgba(214, 69, 69, .25); }
+.btn.mini { padding: 6px 14px; font-size: .85rem; box-shadow: none; }
+
+/* ---------- Cards ---------- */
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 20px; margin-top: 20px; }
+.card {
+    background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio);
+    padding: 24px; box-shadow: var(--sombra); transition: transform .2s, box-shadow .2s;
+    display: flex; flex-direction: column; gap: 6px;
+}
+.card:hover { transform: translateY(-6px); box-shadow: var(--sombra-forte); }
+.card .icone {
+    display: grid; place-items: center; width: 58px; height: 58px; font-size: 1.8rem;
+    background: var(--creme); border-radius: 16px; margin-bottom: 6px;
+}
+.card h3 { margin: 0; }
+.card p { margin: 0; color: var(--cinza); flex: 1; }
+.card .preco { font-family: 'Fredoka', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--menta-escuro); }
+.card .btn { margin-top: 10px; }
+
+/* ---------- Formulários ---------- */
+form.box {
+    background: var(--branco); border: 1px solid var(--borda); border-radius: 22px;
+    padding: 28px; max-width: 520px; box-shadow: var(--sombra);
+}
+form.box h2 { margin-bottom: .2em; }
+label { display: block; margin-top: 14px; font-weight: 800; font-size: .9rem; }
+input, select, textarea {
+    width: 100%; margin-top: 6px; padding: 12px 14px; font: 600 1rem 'Nunito', sans-serif; color: var(--noite);
+    background: var(--creme); border: 2px solid var(--borda); border-radius: 12px;
+    transition: border-color .2s, box-shadow .2s, background .2s;
+}
+input:focus, select:focus, textarea:focus {
+    outline: none; background: #fff; border-color: var(--menta); box-shadow: 0 0 0 4px rgba(46, 196, 182, .18);
+}
+input[type=checkbox] { width: auto; margin-right: 8px; accent-color: var(--coral); }
+label.check { font-weight: 700; display: flex; align-items: center; }
+form.box .btn { margin-top: 22px; width: 100%; }
+form.inline { display: inline; }
+.auth-extra { text-align: center; color: var(--cinza); margin-top: 18px; }
+.centro { margin-left: auto; margin-right: auto; }
+
+/* ---------- Tabelas ---------- */
+.table-wrap {
+    overflow-x: auto; background: var(--branco); border: 1px solid var(--borda);
+    border-radius: var(--raio); box-shadow: var(--sombra); margin-top: 16px;
+}
+table { width: 100%; border-collapse: collapse; min-width: 560px; }
+th, td { padding: 14px 16px; text-align: left; border-bottom: 1px solid var(--borda); }
+th { font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--cinza); background: var(--creme); }
+tr:last-child td { border-bottom: 0; }
+tbody tr:hover { background: #fffaf6; }
+td .btn + .btn, td form + .btn, td .btn + form { margin-left: 4px; }
+
+/* ---------- Status e mensagens ---------- */
+.status { display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: .78rem; font-weight: 800; text-transform: capitalize; }
+.status.pendente { background: #fff1cc; color: #8a6100; }
+.status.confirmado { background: #d6f5f1; color: #0f6f66; }
+.status.concluido { background: #dff3df; color: #2c6e2c; }
+.status.cancelado { background: #fde1e1; color: #a12b2b; }
+
+.msg { padding: 14px 18px; border-radius: 14px; font-weight: 700; margin: 16px 0; border: 1px solid transparent; }
+.msg.ok { background: #e1f7f4; color: #0f6f66; border-color: #b7ebe5; }
+.msg.erro { background: #fde8e8; color: #a12b2b; border-color: #f6c4c4; }
+.msg p { margin: 2px 0; }
+
+.vazio { text-align: center; padding: 48px 20px; background: var(--branco); border: 2px dashed var(--borda); border-radius: var(--raio); color: var(--cinza); }
+.vazio .emoji { font-size: 3rem; display: block; }
+
+.subnav { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
+.subnav a { text-decoration: none; font-weight: 800; padding: 8px 18px; border-radius: 999px; background: var(--branco); border: 1px solid var(--borda); color: var(--noite); }
+.subnav a.ativo, .subnav a:hover { background: var(--noite); color: #fff; }
+
+/* ---------- Rodapé ---------- */
+.site-footer { margin-top: 72px; background: var(--noite); color: #cfd8e3; padding: 40px 6vw 20px; }
+.footer-inner { max-width: 1080px; margin: 0 auto; display: flex; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+.footer-inner strong { color: #fff; font-family: 'Fredoka', sans-serif; font-size: 1.15rem; }
+.footer-inner p { margin: 6px 0 0; }
+.footer-copy { text-align: center; margin: 32px 0 0; font-size: .85rem; opacity: .7; border-top: 1px solid rgba(255, 255, 255, .12); padding-top: 18px; }
+
+/* ---------- Celular ---------- */
+@media (max-width: 760px) {
+    .menu-btn {
+        display: grid; place-items: center; width: 44px; height: 44px; font-size: 1.4rem; cursor: pointer;
+        background: var(--branco); border: 1px solid var(--borda); border-radius: 12px;
+    }
+    .menu {
+        position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 4px;
+        padding: 12px 6vw 18px; background: var(--creme); border-bottom: 1px solid var(--borda);
+        display: none; box-shadow: var(--sombra);
+    }
+    .menu a { padding: 12px 16px; }
+    .menu-toggle:checked ~ .menu { display: flex; }
+    .hero::after { opacity: .35; }
+    .hero > * { max-width: 100%; }
+}
